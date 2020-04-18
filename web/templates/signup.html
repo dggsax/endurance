@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% from "form_macros.html" import render_field %}
+
+{% block body %}
+
+<body>
+    <div class="container-md" style="margin-top: 60px;">
+        <div class="shadow-lg p-3 mb-5 bg-white rounded">
+            <h2>Endurance Signup Form</h2>
+            <form method="post" role="form" class="needs-validation">
+                {{ form.hidden_tag() }}
+                
+                <div class="form-row">
+                    <div class="form-group col-sm-8 col-md-5">
+                        {{ render_field(form.first_name) }}
+                    </div>
+                    <div class="form-group col-sm-4 col-md-2">
+                        {{ render_field(form.initials) }}
+                    </div>
+                    <div class="form-group col-sm-12 col-md-5">
+                        {{ render_field(form.last_name) }}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{ render_field(form.email) }}
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        {{ render_field(form.affiliation) }}
+                    </div>
+                    <div class="form-group col-lg-3" id="class_year_group">
+                        {{ render_field(form.class_year) }}
+                    </div>
+                </div>
+                <div class="form-group" id="major-group">
+                    {{ render_field(form.major) }}
+                </div>
+                <div class="form-group" id="minor-group">
+                    {{ render_field(form.minor) }}
+                </div>
+                <div class="form-group" id="lg-group">
+                    {{ render_field(form.lg) }}
+                </div>
+                <div class="form-group">
+                    {{ render_field(form.activities) }}
+                </div>
+
+                <h2>Data Use Permissions</h2>
+                <p>We hope to use this submissions for a wide variety of multi-media presentations, please check each box below representing whether you're okay with us using this information or not.</p>
+                <div class="form-group form-check">
+                    {{ render_field(form.name_ok) }}
+                </div>
+                <div id="academic-permissions-check">
+                    <div class="form-group form-check" id="class-year-ok-group">
+                        {{ render_field(form.class_year_ok) }}
+                    </div>
+                    <div class="form-group form-check">
+                        {{ render_field(form.major_ok) }}
+                    </div>
+                    <div class="form-group form-check">
+                        {{ render_field(form.minor_ok) }}
+                    </div>
+                    <div class="form-group form-check">
+                        {{ render_field(form.lg_ok)}}
+                    </div>
+                </div>
+                <div class="form-group form-check">
+                    {{ render_field(form.activities_ok) }}
+                </div>
+                {% for field in form.errors %}
+                {% for error in form.errors[field] %}
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{ field }} error!</strong> {{error}}
+                </div>
+                {% endfor %}
+                {% endfor %}
+                <input type="submit" value="Sign Up" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}
+
+{% block script %}
+<script>
+
+    /**
+     * Show/hide fields on the form depending on whether the person filling the form
+     *  out is a student or an alumni
+     * 
+     */
+    const watchAffiliationField = () => {
+        let affiliation = $('#affiliation');
+        affiliation.change(() => {
+            if (affiliation.val() === "Student or Alumni") {
+                $('#class_year_group').show()
+                $('#academic-permissions-check').show()
+                $('#major-group').show()
+                $('#minor-group').show()
+                $('#lg-group').show()
+            } else {
+                $('#class_year_group').hide()
+                $('#class_year').val(null);
+                $('#academic-permissions-check').hide()
+                $('#major-group').hide()
+                $('#minor-group').hide()
+                $('#lg-group').hide()
+            }
+        })
+    }
+
+    window.onload = () => {
+        watchAffiliationField()
+    }
+
+</script>
+{% endblock %}

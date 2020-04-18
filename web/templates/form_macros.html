@@ -1,0 +1,30 @@
+{% macro render_field(field) %}
+    {% if field.type == "BooleanField" %}
+        {% set field_classes = "form-check-input" %}
+    {% else %}
+        {% set field_classes = "form-control" %}
+    {% endif %}
+
+    {% if field.errors %}
+        {% set field_classes = field_classes + " is-invalid" %}
+    {% elif field.errors and field.errors | length == 0 and field.data != "" %}
+        {% set field_classes = field_classes + " is-valid" %}
+    {% endif %}
+
+    {% if field.type == "SelectField" %}
+        {% set field_classes = field_classes + " custom_select" %}
+    {% endif %}
+
+    {% if field.type == "BooleanField" %}
+        {{ field(class_=field_classes, **kwargs)|safe }}
+        {{ field.label }}
+    {% else %}
+        {{ field.label }}
+        {{ field(class_=field_classes, **kwargs)|safe }}
+    {% endif %}
+    
+    {% if field.description %}
+        <small class="form-text text-muted help-text">{{ field.description }}</small>
+    {% endif%}
+
+{% endmacro %}

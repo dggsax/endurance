@@ -1,0 +1,56 @@
+21,African and African Diaspora Studies
+21,Ancient and Medieval Studies
+21A,Anthropology
+17,Applied Inter­national Studies
+3-C,Archaeology and Materials
+4,Architecture
+4,"Art, Culture and Technology"
+21,Asian and Asian Diaspora Studies
+8 or 12,Astronomy
+12,Atmospheric Chemistry
+7,Biology
+20,Biomedical Engineering
+9,Brain and Cognitive Sciences
+15-2,Business Analytics
+5,Chemistry
+21G,Chinese
+1,Civil and Environmental Systems
+1,Civil Engineering
+CMS,Comparative Media Studies
+CS&E/6-3,Computer Science and Engineering and Computer Science
+4,Design
+12,"Earth, Atmospheric, and Planetary Sciences"
+14,Economics
+12,Energy Studies
+E&I,Entrepreneurship & Innovation
+1,Environmental Engineering Science
+Inter-school,Environment and Sustainability
+15-3,Finance
+21G,French
+21G,German
+21H,History
+4,"History of Architecture, Art and Design"
+11,International Development
+21G,Japanese
+21,Latin American and Latino/a Studies
+21L,Literature
+15-1,Management
+18,Mathematics
+2 & 2-A,Mechanical Engineering
+21,Middle Eastern Studies
+21M,Music
+22,Nuclear Science and Engineering
+24-1,Philosophy
+8,Physics
+17,Political Science
+Inter­disciplinary,Polymers and Soft Matter
+17,Public Policy
+21,Russian and Eurasian Studies
+STS,"Science, Technology and Society"
+21G,Spanish
+IDSS,Statistics and Data Science
+21M,Theater Arts
+20,Toxicology and Environmental Health
+11,Urban Studies and Planning
+21,Women’s and Gender Studies
+21W,Writing

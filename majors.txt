@@ -1,0 +1,57 @@
+16 & 16-ENG,Aerospace Engineering
+21,American Studies
+21,Ancient and Medieval Studies
+21A,Anthropology
+3-C,Archaeology and Materials
+4,Architecture
+4-B,Art and Design
+21,Asian and Asian Diaspora Studies
+20,Biological Engineering
+7,Biology
+9,Brain and Cognitive Sciences
+15-2,Business Analytics
+10 & 10-C & 10-ENG,Chemical Engineering
+10-B,Chemical-Biological Engineering
+5,Chemistry
+5-7,Chemistry and Biology
+1-ENG,Civil and Environmental Engineering
+CMS,Comparative Media Studies
+6-9,Computation and Cognition
+CS&E/6-3,Computer Science and Engineering and Computer Science
+6-7,Computer Science and Molecular Biology
+6-14,Data Science
+12,"Earth, Atmospheric, and Planetary Sciences"
+13,Ocean Engineering
+14,Economics
+6-2,Electrical Engineering and Computer Science
+6-1,Electrical Science and Engineering
+15-3,Finance
+21G,French
+21G,German
+21H,History
+21E,Humanities and Engineering
+21S,Humanities and Science
+21,Latin American and Latino/a Studies
+24-2,Linguistics
+21L,Literature
+15-1,Management
+3 & 3-A,Materials Science and Engineering
+14-2,Mathematical Economics
+18,Mathematics
+18-C,Mathematics with Computer Science
+2 & 2-A,Mechanical Engineering
+2-OE,Mechanical and Ocean Engineering
+21M,Music
+22,Nuclear Science and Engineering
+22-ENG,Flexible Nuclear Science and Engineering Degree
+24-1,Philosophy
+8,Physics
+11,Planning
+17,Political Science
+21,Russian and Eurasian Studies
+STS,"Science, Technology and Society"
+21G,Spanish
+21M,Theater Arts
+11-6,Urban Science and Planning with Computer Science
+21,Women’s and Gender Studies
+21W,Writing

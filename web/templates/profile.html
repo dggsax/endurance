@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<body>
+    <div id="dropbox-embedder"></div>
+</body>
+{% endblock %}
+
+
+{% block script %}
+<script>
+    /**
+     * Load the dropbox visuals for Member to see the files and folders 
+     *  that they have submitted thus far. For documentation about 
+     *  the embedder: https://www.dropbox.com/developers/embedder 
+     *  
+     */
+    const embedEmbedder = (destinationElementId, url) => {
+        let element = document.getElementById(destinationElementId);
+        Dropbox.embed({ link: url }, element)
+    }
+
+    // wait for page to load before executing javascript
+    window.onload = () => {
+        let memberDropboxFolderURL = "https://www.dropbox.com/sh/0133dqs55ez1fdu/AACkXyfO7x_QRT0kKTKwICUka?dl=0";
+
+        embedEmbedder("dropbox-embedder", memberDropboxFolderURL)
+    }
+</script>
+{% endblock %}
