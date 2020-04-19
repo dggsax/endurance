@@ -1,56 +1,56 @@
-21,African and African Diaspora Studies
-21,Ancient and Medieval Studies
-21A,Anthropology
-17,Applied Inter­national Studies
-3-C,Archaeology and Materials
-4,Architecture
-4,"Art, Culture and Technology"
-21,Asian and Asian Diaspora Studies
-8 or 12,Astronomy
-12,Atmospheric Chemistry
-7,Biology
-20,Biomedical Engineering
-9,Brain and Cognitive Sciences
-15-2,Business Analytics
-5,Chemistry
-21G,Chinese
+CMS,Comparative Media Studies
+E&I,Entrepreneurship & Innovation
+IDSS,Statistics and Data Science
+Inter-school,Environment and Sustainability
+Inter­disciplinary,Polymers and Soft Matter
+STS,"Science, Technology and Society"
+1,Environmental Engineering Science
 1,Civil and Environmental Systems
 1,Civil Engineering
-CMS,Comparative Media Studies
-CS&E/6-3,Computer Science and Engineering and Computer Science
+2 & 2-A,Mechanical Engineering
+3-C,Archaeology and Materials
+4,Architecture
+4,Art, Culture and Technology
 4,Design
-12,"Earth, Atmospheric, and Planetary Sciences"
-14,Economics
+4,History of Architecture, Art and Design
+5,Chemistry
+6-3/CS&E,Computer Science and Engineering and Computer Science
+7,Biology
+8,Physics
+8 or 12,Astronomy
+9,Brain and Cognitive Sciences
+11,International Development
+11,Urban Studies and Planning
+12,Atmospheric Chemistry
+12,Earth, Atmospheric, and Planetary Sciences
 12,Energy Studies
-E&I,Entrepreneurship & Innovation
-1,Environmental Engineering Science
-Inter-school,Environment and Sustainability
+14,Economics
+15-1,Management
+15-2,Business Analytics
 15-3,Finance
+17,Political Science
+17,Public Policy
+17,Applied Inter­national Studies
+18,Mathematics
+20,Biomedical Engineering
+20,Toxicology and Environmental Health
+21,African and African Diaspora Studies
+21,Ancient and Medieval Studies
+21,Asian and Asian Diaspora Studies
+21,Latin American and Latino/a Studies
+21,Middle Eastern Studies
+21,Russian and Eurasian Studies
+21,Women’s and Gender Studies
+21A,Anthropology
+21G,Chinese
 21G,French
 21G,German
-21H,History
-4,"History of Architecture, Art and Design"
-11,International Development
 21G,Japanese
-21,Latin American and Latino/a Studies
+21G,Spanish
+21H,History
 21L,Literature
-15-1,Management
-18,Mathematics
-2 & 2-A,Mechanical Engineering
-21,Middle Eastern Studies
 21M,Music
+21M,Theater Arts
+21W,Writing
 22,Nuclear Science and Engineering
 24-1,Philosophy
-8,Physics
-17,Political Science
-Inter­disciplinary,Polymers and Soft Matter
-17,Public Policy
-21,Russian and Eurasian Studies
-STS,"Science, Technology and Society"
-21G,Spanish
-IDSS,Statistics and Data Science
-21M,Theater Arts
-20,Toxicology and Environmental Health
-11,Urban Studies and Planning
-21,Women’s and Gender Studies
-21W,Writing
