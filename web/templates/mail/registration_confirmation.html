@@ -1,0 +1,36 @@
+<p>Hello {{ member.first_name }}</p>
+
+<p>Thank you very much for signing up to submit content to STS.050's Endurance Project. We're really excited to hear
+    your experiences, stories, and thoughts as the current state of affairs have impacted them. In this email, we have a
+    few links that are going to be important for you to keep track of, so please be sure to not delete this email!</p>
+
+<ul>
+    <li><b><a href="{{ member.magic_link | safe }}">Login Link:</a></b> this link will let you log back into our website
+        so
+        that you can access your files and edit
+        your information. This link will enable anyone with the link to access the content you submit to us and change
+        the biographical information you submitted, so make sure to keep it safe. If the link is not working, please
+        email us and we'll get you set up.</li>
+    <li><b><a href="{{ member.dropbox_file_upload_url | safe }}">Dropbox File Request Link:</a></b> this link will take
+        you to
+        the file request on Dropbox that we created specially for you. Anything you upload here will automatically be
+        available to us for the project. There should be no limitations with what you can upload to this, but if you
+        face any issues, please feel free to reach out to us.</li>
+    <li><b><a href="{{ member.dropbox_shared_folder_url | safe }}">Dropbox Folder Link: </a></b> this link will take you
+        to the Dropbox folder with all of the submissions you've given to us for review. As of now, there is no
+        functionality on your part to delete anything in this folder, so if you upload something and decide later you
+        don't want us to have access, please let us know. You can also view the contents of this folder by logging in to
+        your profile using your login link.</li>
+</ul>
+
+<p>If you end up losing track of this email, let us know, we can send you this information again. If you lose your login
+    link or it doesn't work, just go to endurance.mit.edu/login and click "Resend Magic Link"</p>
+
+<p>This project was built over the last weekend, so if you find any issues or there is anything wrong with this email,
+    please reply and let us know.</p>
+
+<p>Wishing the best for you and yours,</p>
+
+<p>Daniel "Gonzo" Gonzalez on behalf of STS.050's Endurance Team</p>
+
+<p><em>All content of this email was automatically generated, replies to this email are monitored.</em></p>

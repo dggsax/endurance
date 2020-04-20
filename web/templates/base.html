@@ -4,48 +4,65 @@
 
     <head>
         <!-- CSS -->
-        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/bootstrap.min.css')}}">
-        <!-- <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/bulma.min.css')}}"> -->
-
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}">
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/chosen.min.css') }}">
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/component-chosen.min.css') }}">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
             integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
         <!-- Fonts! -->
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
 
-        <!-- JS -->
-        <script src="{{ url_for('static', filename='vendor/jquery-3.5.0.min.js')}}"></script>
-        <script src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js')}}"></script>
-        <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="pnf3hxap7zkygz3"></script>
-
         <title>MIT Endurance</title>
 
         <style>
             body {
                 background-color: #FEFEFE;
+                font-family: "Palatino";
             }
 
-            select.form-control[multiple] {
-                resize: vertical;
-                min-height: 50px;
+            /* fixes issue where the padding on the multi-select field is displaced 😤*/
+            .chosen-container-multi .chosen-choices {
+                padding: .375rem .75rem !important;
+            }
+
+            /* changing the font color on me 👺 */
+            .chosen-container-multi .chosen-choices li.search-field input[type=text] {
+                color: #6c757d !important;
+            }
+
+            .chosen-container-multi .chosen-choices li.search-choice {
+                border: 1px solid #ced4dd !important;
+                background-color: #f8f9fa !important;
+                background-image: none !important;
             }
         </style>
     </head>
 
-    {% with messages = get_flashed_messages() %}
+    <!-- Div for messages as they appear -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    <ul class=flashes>
-        {% for message in messages %}
-        <li>{{ message }}</li>
+        {% for category, message in messages %}
+            <div  class="alert alert-{{category}}" role="alert" style="width:100%;">
+                {{ message }}
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         {% endfor %}
-    </ul>
     {% endif %}
-    {% endwith %}
-
+{% endwith %}
 
     {% block body %}
     {% endblock %}
 
+    <!-- JS -->
+    <script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery-3.5.0.min.js') }}"></script>
+    <script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs"
+        data-app-key="pnf3hxap7zkygz3"></script>
     {% block script %}
     {% endblock %}
 

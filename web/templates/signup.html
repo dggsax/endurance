@@ -7,68 +7,15 @@
     <div class="container-md" style="margin-top: 60px;">
         <div class="shadow-lg p-3 mb-5 bg-white rounded">
             <h2>Endurance Signup Form</h2>
+            <p>Please note, you will be able to edit your responses here later, so if you make a mistake while submitting, don't fret!</p>
             <form method="post" role="form" class="needs-validation">
+                {{ form.csrf_token }}
                 {{ form.hidden_tag() }}
-                
-                <div class="form-row">
-                    <div class="form-group col-sm-8 col-md-5">
-                        {{ render_field(form.first_name) }}
-                    </div>
-                    <div class="form-group col-sm-4 col-md-2">
-                        {{ render_field(form.initials) }}
-                    </div>
-                    <div class="form-group col-sm-12 col-md-5">
-                        {{ render_field(form.last_name) }}
-                    </div>
-                </div>
-                <div class="form-group">
-                    {{ render_field(form.email) }}
-                </div>
 
+                {% if form.csrf_token.errors %}
+                <div class="warning">You have submitted an invalid CSRF token</div>
+                {% endif %}
 
-                <div class="form-row">
-                    <div class="form-group col-lg-6">
-                        {{ render_field(form.affiliation) }}
-                    </div>
-                    <div class="form-group col-lg-3" id="class_year_group">
-                        {{ render_field(form.class_year) }}
-                    </div>
-                </div>
-                <div class="form-group" id="major-group">
-                    {{ render_field(form.major) }}
-                </div>
-                <div class="form-group" id="minor-group">
-                    {{ render_field(form.minor) }}
-                </div>
-                <div class="form-group" id="lg-group">
-                    {{ render_field(form.lg) }}
-                </div>
-                <div class="form-group">
-                    {{ render_field(form.activities) }}
-                </div>
-
-                <h2>Data Use Permissions</h2>
-                <p>We hope to use this submissions for a wide variety of multi-media presentations, please check each box below representing whether you're okay with us using this information or not.</p>
-                <div class="form-group form-check">
-                    {{ render_field(form.name_ok) }}
-                </div>
-                <div id="academic-permissions-check">
-                    <div class="form-group form-check" id="class-year-ok-group">
-                        {{ render_field(form.class_year_ok) }}
-                    </div>
-                    <div class="form-group form-check">
-                        {{ render_field(form.major_ok) }}
-                    </div>
-                    <div class="form-group form-check">
-                        {{ render_field(form.minor_ok) }}
-                    </div>
-                    <div class="form-group form-check">
-                        {{ render_field(form.lg_ok)}}
-                    </div>
-                </div>
-                <div class="form-group form-check">
-                    {{ render_field(form.activities_ok) }}
-                </div>
                 {% for field in form.errors %}
                 {% for error in form.errors[field] %}
                 <div class="alert alert-danger alert-dismissable">
@@ -77,6 +24,75 @@
                 </div>
                 {% endfor %}
                 {% endfor %}
+
+                <div class="form-row">
+                    <div class="form-group col-sm-8 col-md-5" autocomplete="given-name">
+                        {{ render_field(form.first_name) }}
+                    </div>
+                    <div class="form-group col-sm-4 col-md-2">
+                        {{ render_field(form.initials) }}
+                    </div>
+                    <div class="form-group col-sm-12 col-md-5" autocomplete="family-name">
+                        {{ render_field(form.last_name) }}
+                    </div>
+                </div>
+                <div class="form-group" autocomplete="email">
+                    {{ render_field(form.email) }}
+                </div>
+
+
+                <div class="form-row">
+                    <div class="form-group col-lg-6">
+                        {{ render_field(form.affiliation) }}
+                    </div>
+                    <div class="form-group col-lg-3 mit-specific">
+                        {{ render_field(form.class_year) }}
+                    </div>
+                </div>
+                <div class="form-group mit-specific">
+                    {{ render_field(form.major) }}
+                </div>
+                <div class="form-group mit-specific">
+                    {{ render_field(form.minor) }}
+                </div>
+                <div class="form-group mit-specific">
+                    {{ render_field(form.lg) }}
+                </div>
+                <div class="form-group mit-specific">
+                    {{ render_field(form.activities) }}
+                </div>
+                <div class="form-group">
+                    {{ render_field(form.bio) }}
+                </div>
+
+                <h2>Data Use Permissions</h2>
+                <p>We hope to use this submissions for a wide variety of multi-media presentations, please check each
+                    box below representing whether you're okay with us using this information or not.</p>
+                <ul>
+                    <li class="form-group form-check">
+                        {{ render_field(form.name_ok) }}
+                    </li>
+                    <div id="mit-status-check">
+                        <li class="form-group form-check mit-specific">
+                            {{ render_field(form.class_year_ok) }}
+                        </li>
+                        <li class="form-group form-check mit-specific">
+                            {{ render_field(form.major_ok) }}
+                        </li>
+                        <li class="form-group form-check mit-specific">
+                            {{ render_field(form.minor_ok) }}
+                        </li>
+                        <li class="form-group form-check mit-specific">
+                            {{ render_field(form.lg_ok)}}
+                        </li>
+                        <li class="form-group form-check">
+                            {{ render_field(form.activities_ok) }}
+                        </li>
+                        <li class="form-group form-check">
+                            {{ render_field(form.bio_ok) }}
+                        </li>
+                    </div>
+                </ul>
                 <input type="submit" value="Sign Up" class="btn btn-primary">
             </form>
         </div>
@@ -96,25 +112,26 @@
         let affiliation = $('#affiliation');
         affiliation.change(() => {
             if (affiliation.val() === "Student or Alumni") {
-                $('#class_year_group').show()
-                $('#academic-permissions-check').show()
-                $('#major-group').show()
-                $('#minor-group').show()
-                $('#lg-group').show()
+                $('.mit-specific').show()
             } else {
-                $('#class_year_group').hide()
-                $('#class_year').val(null);
-                $('#academic-permissions-check').hide()
-                $('#major-group').hide()
-                $('#minor-group').hide()
-                $('#lg-group').hide()
+                $('.mit-specific').hide()
+
+                // THIS IS REALLY IMPORTANT, IF WE DON'T SET TO NULL AND SOMEONE SPECIFIES
+                // A CLASS YEAR AND THEN CHANGES THEIR STATUS TO OTHER, THEN WE WILL PUT THERE
+                // FILES SOMEWHERE AS IF THEY ARE A CLASS YEAR!
+                $('#class_year').val(1861);
             }
         })
     }
 
-    window.onload = () => {
-        watchAffiliationField()
+    const activateChosen = () => {
+        $('#major').chosen();
+        $('#minor').chosen();
     }
 
+    $(document).ready(() => {
+        watchAffiliationField()
+        activateChosen()
+    })
 </script>
 {% endblock %}

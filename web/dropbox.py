@@ -1,8 +1,11 @@
-from web import dbx
+from web import dbx, db
 from web.models import Member
 from web.models.member import AffiliationEnum
 
-def dropbox_setup_member(member):
+from dropbox.exceptions import ApiError
+
+
+def dropbox_setup_member(member, commit=False):
     """
     setup_member generate dropbox links for submitted Member 
         and add them to instance
@@ -14,15 +17,46 @@ def dropbox_setup_member(member):
         to the folder that will store their files
     :rtype: tuple
     """
-    assert isinstance(member, Member), "Instance of `model.Member` must be provided to this method"
-    
+    assert isinstance(
+        member, Member
+    ), "Instance of `model.Member` must be provided to this method"
+
     path = generate_path(member)
 
-    file_request_url = create_file_request(member, path)
-    folder_url = create_shared_link(path)
+    create_file_request(member, path)
+    create_shared_link(member, path)
+
+    if commit:
+        db.session.commit()
+
+
+def cancel_request(member, commit=True):
+    """
+    cancel_request Cancel request by deleting the folder generated for the user
     
-    member.dropbox_file_upload_url = file_request_url
-    member.dropbox_shared_folder_url = folder_url
+    :param member: member
+    :type member: web.models.Member
+    :param commit: whether or not to commit changes to database session, defaults 
+        to True
+    :type commit: bool, optional
+    :raises e: We expect ApiError in case the folder doesn't exist and the file
+        request was already deleted for that user, but if we have another exception,
+        we want to be sure to raise it
+    """
+
+    try:
+        dbx.files_delete(path=generate_path(member))
+    except ApiError as e:
+        pass
+    except Exception as e:
+        raise e
+
+    member.dropbox_file_request_id = None
+    member.dropbox_file_upload_url = None
+    member.dropbox_shared_folder_url = None
+
+    if commit:
+        db.session.commit()
 
 def generate_path(member):
     """
@@ -35,13 +69,14 @@ def generate_path(member):
     :param member: [description]
     :type member: [type]
     """
-     
+
     if member.affiliation is AffiliationEnum.StudentOrAlumni:
-        path = F"/submissions/{member.class_year}/{member.full_name_for_path()}"
+        path = f"/submissions/{member.class_year}/{member.full_name_for_path()} - {member.email}"
     else:
-        path = F"/submissions/Other/{member.full_name_for_path()}"
+        path = f"/submissions/Other/{member.full_name_for_path()} - {member.email}"
 
     return path
+
 
 def create_file_request(member, path):
     """
@@ -58,13 +93,15 @@ def create_file_request(member, path):
     :rtype: string
     """
 
-    title = F"Endurance File Request for {member.full_name_for_path()}"
-    
+    title = f"Endurance File Request for {member.full_name_for_path()}"
+
     result = dbx.file_requests_create(title, path)
 
-    return result.url
+    member.dropbox_file_request_id = result.id
+    member.dropbox_file_upload_url = result.url
 
-def create_shared_link(path):
+
+def create_shared_link(member, path):
     """
     create_shared_link generate a sharable link to folder 
         containing files uploaded via the member's file request
@@ -78,4 +115,4 @@ def create_shared_link(path):
 
     result = dbx.sharing_create_shared_link(path)
 
-    return result.url
+    member.dropbox_shared_folder_url = result.url

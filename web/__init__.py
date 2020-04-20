@@ -18,14 +18,31 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 app.config["SECRET_KEY"] = os.environ.get(
     "SECRET_KEY", default="You need a secret, shh, don't tell anyone!"
 )
-# app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET', default='You need a secret!')
-# app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(days=1)
-# app.config['ROOT_URL'] = os.environ.get('ROOT_URL')
+app.config["WTF_CSRF_TIME_LIMIT"] = None
+app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER")
+app.config["MAIL_PORT"] = os.environ.get("MAIL_PORT")
+app.config["MAIL_USE_TLS"] = False
+app.config["MAIL_USE_SSL"] = os.environ.get("MAIL_USE_SSL")
+app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
+app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
+
+# set up redis queue
+from rq import Queue
+import redis
+
+r = redis.Redis()
+q = Queue(connection=r, default_timeout=120)
 
 # set up CSRF
 from flask_wtf.csrf import CSRFProtect
 
 csrf = CSRFProtect(app)
+
+# set up login
+from flask_login import LoginManager
+
+login_manager = LoginManager(app=app)
+login_manager.init_app(app=app)
 
 # set up database
 from web.models import db
@@ -46,6 +63,13 @@ if dropbox_token is None:
 
 dbx = Dropbox(dropbox_token)
 
+# set up mail
+from flask_mail import Mail
+
+mail = Mail()
+mail.init_app(app)
+
+
 # import controllers and register the templates
 import web.controllers
 
@@ -57,7 +81,8 @@ import web.controllers
 @app.cli.command("setup-db")
 def setup_db():
     """Create database and import Majors/Minors"""
-
+    print("Clearing any pending session actions")
+    db.session.remove()
     print("Dropping Tables")
     db.drop_all()
     print("Creating Tables")
@@ -146,4 +171,3 @@ def import_studies():
 
     print("Committing Changes")
     db.session.commit()
-

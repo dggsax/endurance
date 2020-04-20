@@ -7,8 +7,8 @@
 
     {% if field.errors %}
         {% set field_classes = field_classes + " is-invalid" %}
-    {% elif field.errors and field.errors | length == 0 and field.data != "" %}
-        {% set field_classes = field_classes + " is-valid" %}
+    {# {% elif field.errors | length == 0 %}
+        {% set field_classes = field_classes + " is-valid" %} #}
     {% endif %}
 
     {% if field.type == "SelectField" %}

@@ -3,7 +3,12 @@
 {% block body %}
 
 <body>
-    <div id="dropbox-embedder"></div>
+    <div class="container">
+    {{ current_user.full_name_for_path() }}
+    <a href="{{ current_user.dropbox_file_upload_url }}">File Upload Link</a>
+
+    <div id="dropbox-embedder" style="min-height: 500px;"></div>
+    </div>
 </body>
 {% endblock %}
 
@@ -22,10 +27,10 @@
     }
 
     // wait for page to load before executing javascript
-    window.onload = () => {
-        let memberDropboxFolderURL = "https://www.dropbox.com/sh/0133dqs55ez1fdu/AACkXyfO7x_QRT0kKTKwICUka?dl=0";
+    $(document).ready(() => {
+        let memberDropboxFolderURL = "{{ current_user.dropbox_shared_folder_url }}"
 
         embedEmbedder("dropbox-embedder", memberDropboxFolderURL)
-    }
+    })
 </script>
 {% endblock %}
