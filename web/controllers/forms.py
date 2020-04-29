@@ -94,3 +94,10 @@ class MemberForm(FlaskForm):
     )
     bio_ok = BooleanField(label="OK to make your brief bio?", default=False)
 
+class SendTestEmailForm(FlaskForm):
+    email = StringField(
+        label="Recipient Email",
+        validators=[DataRequired(), Email()],
+        description="Email to send test email to",
+        default="dggsax@gmail.com"
+    )

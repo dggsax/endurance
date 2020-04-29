@@ -1,5 +1,7 @@
 __pycache__/
 env/
+env-3.6/
+venv/
 .env
 manage.py
 **/*/form_macros_bulma.html

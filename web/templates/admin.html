@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% from "form_macros.html" import render_field %}
+
+{% block body %}
+
+<body>
+    <main>
+        Admin interface
+        <section>
+            <h2>Send test email</h2>
+            <form method="post" role="form" class="needs-validation">
+                {{ test_email_form.hidden_tag() }}
+
+                {% for field in test_email_form.errors %}
+                {% for error in test_email_form.errors[field] %}
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>{{ field }} error!</strong> {{error}}
+                </div>
+                {% endfor %}
+                {% endfor %}
+
+                {{ render_field(test_email_form.email) }}
+
+                <input type="submit" value="Send Test Email" class="btn btn-primary">
+            </form>
+        </section>
+    </main>
+</body>
+{% endblock %}

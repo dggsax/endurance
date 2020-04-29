@@ -34,6 +34,21 @@ def profile_view():
     return render_template("profile.html")
 
 
+@main.route("/admin", methods=["GET", "POST"])
+def admin():
+    test_email_form = SendTestEmailForm()
+
+    if test_email_form.validate_on_submit():
+        print("Sending email now!")
+        recipient = test_email_form.email.data
+        print(recipient)
+        send_email(recipient=recipient, subject="[ENDURANCE] TEST EMAIL", template="mail/test_email")
+
+        
+
+
+    return render_template("admin.html", test_email_form=test_email_form)
+
 @main.route("/login", methods=["GET"])
 def login():
     email = request.args.get("email")

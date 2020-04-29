@@ -20,6 +20,7 @@ app.config["SECRET_KEY"] = os.environ.get(
 )
 app.config["WTF_CSRF_TIME_LIMIT"] = None
 app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER")
+app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER", default="localhost")
 app.config["MAIL_PORT"] = os.environ.get("MAIL_PORT")
 app.config["MAIL_USE_TLS"] = False
 app.config["MAIL_USE_SSL"] = os.environ.get("MAIL_USE_SSL")
