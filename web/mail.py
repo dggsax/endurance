@@ -19,15 +19,23 @@ def send_registration_confirmation(member):
     member_copy["dropbox_file_upload_url"] = member.dropbox_file_upload_url
     member_copy["dropbox_shared_folder_url"] = member.dropbox_shared_folder_url
 
-    job = q.enqueue(
-        send_email,
+    # commenting out cause might not need to use redis queue for emails anymore
+    # job = q.enqueue(
+    #     send_email,
+    #     recipient=recipient,
+    #     subject=subject,
+    #     template=template,
+    #     member=member_copy
+    # )
+
+    # app.logger.debug(f"Job with ID {job.id} created to send confirmation email to {member.email} added to queue at {job.enqueued_at}")
+
+    send_email(
         recipient=recipient,
         subject=subject,
         template=template,
         member=member_copy
     )
-
-    app.logger.debug(f"Job with ID {job.id} created to send confirmation email to {member.email} added to queue at {job.enqueued_at}")
 
     flash("Confirmation Email Sent!")
 
@@ -38,7 +46,7 @@ def send_email(recipient, subject, template, **kwargs):
     with app.app_context():
         msg = Message(
             subject,
-            sender=("MIT Endurance Project", "mitendurance@gmail.com"),
+            sender=("MIT Endurance Project", "endurance@mit.edu"),
             recipients=[recipient])
         # msg.body = render_template(template + '.txt', **kwargs)
         msg.html = render_template(template + '.html', **kwargs)

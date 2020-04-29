@@ -3,11 +3,17 @@ from dotenv import load_dotenv
 
 import inspect
 import dropbox
+import logging
 import os
 
 load_dotenv()
 
 app = Flask(__name__)
+
+# Set up logging
+handler = logging.FileHandler('/var/log/endurance/app.log')  # errors logged to this file
+handler.setLevel(logging.ERROR)  # only log errors and above
+app.logger.addHandler(handler)
 
 # Set up the application configuration
 app.config["ENV"] = os.environ.get("FLASK_ENV")
@@ -19,13 +25,9 @@ app.config["SECRET_KEY"] = os.environ.get(
     "SECRET_KEY", default="You need a secret, shh, don't tell anyone!"
 )
 app.config["WTF_CSRF_TIME_LIMIT"] = None
-app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER")
-app.config["MAIL_SERVER"] = os.environ.get("MAIL_SERVER", default="localhost")
-app.config["MAIL_PORT"] = os.environ.get("MAIL_PORT")
-app.config["MAIL_USE_TLS"] = False
-app.config["MAIL_USE_SSL"] = os.environ.get("MAIL_USE_SSL")
-app.config["MAIL_USERNAME"] = os.environ.get("MAIL_USERNAME")
-app.config["MAIL_PASSWORD"] = os.environ.get("MAIL_PASSWORD")
+
+# app.config["REDIS_HOST"] = os.environ.get("REDIS_HOST", default='localhost')
+# app.config["REDIS_PORT"] = os.environ.get("REDIS_PORT", default=6379)
 
 # set up redis queue
 from rq import Queue
