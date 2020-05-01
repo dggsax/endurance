@@ -21,21 +21,6 @@ app.config["SECRET_KEY"] = os.environ.get(
 )
 app.config["WTF_CSRF_TIME_LIMIT"] = None
 
-# Set up logging
-try:
-    handler = logging.FileHandler(filename='/var/log/endurance/app.log')  # errors logged to this file
-except FileNotFoundError as e:
-    app.logger.debug("Unable to write to '/var/log/endurance/app.log', writing to './app.log' instead'")
-    handler = logging.FileHandler(filename='./app.log')
-finally:
-    if app.config["ENV"] == "development":
-        handler.setLevel(logging.DEBUG)  # only log errors and above
-    else:
-        handler.setLevel(logging.ERROR)  # only log errors and above
-    
-    app.logger.addHandler(handler)
-
-
 # set up CSRF
 from flask_wtf.csrf import CSRFProtect
 

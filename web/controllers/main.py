@@ -55,8 +55,8 @@ def profile_view():
 
             # because we currently can't change major, ignore the "changes"
             #   (which will appear as just empty arrays)
-            del filtered["major"]
-            del filtered["minor"]
+            if "major" in filtered: del filtered["major"]
+            if "minor" in filtered: del filtered["minor"]
 
             for key, value in filtered.items():
                 setattr(current_user, key, value)
@@ -69,8 +69,7 @@ def profile_view():
             )
 
     except Exception as e:
-        app.logger.error(e)
-        return e
+        raise e
 
     return render_template("profile.html", form=form)
 

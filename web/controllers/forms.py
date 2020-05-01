@@ -25,7 +25,7 @@ class MemberForm(FlaskForm):
 
     def validate_email(self, field):
         if (
-            field.data != current_user.email
+            field.data != self.email
             and Member.query.filter_by(email=field.data).first() is not None
         ):
             raise ValidationError(
