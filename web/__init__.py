@@ -10,11 +10,6 @@ load_dotenv()
 
 app = Flask(__name__)
 
-# Set up logging
-handler = logging.FileHandler('/var/log/endurance/app.log')  # errors logged to this file
-handler.setLevel(logging.ERROR)  # only log errors and above
-app.logger.addHandler(handler)
-
 # Set up the application configuration
 app.config["ENV"] = os.environ.get("FLASK_ENV")
 app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get(
@@ -26,15 +21,20 @@ app.config["SECRET_KEY"] = os.environ.get(
 )
 app.config["WTF_CSRF_TIME_LIMIT"] = None
 
-# app.config["REDIS_HOST"] = os.environ.get("REDIS_HOST", default='localhost')
-# app.config["REDIS_PORT"] = os.environ.get("REDIS_PORT", default=6379)
+# Set up logging
+try:
+    handler = logging.FileHandler(filename='/var/log/endurance/app.log')  # errors logged to this file
+except FileNotFoundError as e:
+    app.logger.debug("Unable to write to '/var/log/endurance/app.log', writing to './app.log' instead'")
+    handler = logging.FileHandler(filename='./app.log')
+finally:
+    if app.config["ENV"] == "development":
+        handler.setLevel(logging.DEBUG)  # only log errors and above
+    else:
+        handler.setLevel(logging.ERROR)  # only log errors and above
+    
+    app.logger.addHandler(handler)
 
-# set up redis queue
-from rq import Queue
-import redis
-
-r = redis.Redis()
-q = Queue(connection=r, default_timeout=120)
 
 # set up CSRF
 from flask_wtf.csrf import CSRFProtect
@@ -53,6 +53,9 @@ from web.models import Member, Major, Minor
 
 db.app = app
 db.init_app(app)
+
+from flask_migrate import Migrate
+migrate = Migrate(app, db)
 
 # set up dropbox
 from dropbox import Dropbox

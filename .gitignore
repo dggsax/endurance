@@ -7,3 +7,7 @@ manage.py
 **/*/form_macros_bulma.html
 **/*/signup_bulma.html
 ngrok
+app.log
+
+web/static/img/class.jpg
+web/static/img/mit-aerial.jpg

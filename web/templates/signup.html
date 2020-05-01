@@ -4,99 +4,179 @@
 {% block body %}
 
 <body>
-    <div class="container-md" style="margin-top: 60px;">
-        <div class="shadow-lg p-3 mb-5 bg-white rounded">
-            <h2>Endurance Signup Form</h2>
-            <p>Please note, you will be able to edit your responses here later, so if you make a mistake while submitting, don't fret!</p>
-            <form method="post" role="form" class="needs-validation">
-                {{ form.csrf_token }}
-                {{ form.hidden_tag() }}
-
-                {% if form.csrf_token.errors %}
-                <div class="warning">You have submitted an invalid CSRF token</div>
-                {% endif %}
-
-                {% for field in form.errors %}
-                {% for error in form.errors[field] %}
-                <div class="alert alert-danger alert-dismissable">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>{{ field }} error!</strong> {{error}}
-                </div>
-                {% endfor %}
-                {% endfor %}
-
-                <div class="form-row">
-                    <div class="form-group col-sm-8 col-md-5" autocomplete="given-name">
-                        {{ render_field(form.first_name) }}
-                    </div>
-                    <div class="form-group col-sm-4 col-md-2">
-                        {{ render_field(form.initials) }}
-                    </div>
-                    <div class="form-group col-sm-12 col-md-5" autocomplete="family-name">
-                        {{ render_field(form.last_name) }}
-                    </div>
-                </div>
-                <div class="form-group" autocomplete="email">
-                    {{ render_field(form.email) }}
-                </div>
-
-
-                <div class="form-row">
-                    <div class="form-group col-lg-6">
-                        {{ render_field(form.affiliation) }}
-                    </div>
-                    <div class="form-group col-lg-3 mit-specific">
-                        {{ render_field(form.class_year) }}
-                    </div>
-                </div>
-                <div class="form-group mit-specific">
-                    {{ render_field(form.major) }}
-                </div>
-                <div class="form-group mit-specific">
-                    {{ render_field(form.minor) }}
-                </div>
-                <div class="form-group mit-specific">
-                    {{ render_field(form.lg) }}
-                </div>
-                <div class="form-group mit-specific">
-                    {{ render_field(form.activities) }}
-                </div>
-                <div class="form-group">
-                    {{ render_field(form.bio) }}
-                </div>
-
-                <h2>Data Use Permissions</h2>
-                <p>We hope to use this submissions for a wide variety of multi-media presentations, please check each
-                    box below representing whether you're okay with us using this information or not.</p>
-                <ul>
-                    <li class="form-group form-check">
-                        {{ render_field(form.name_ok) }}
+    <section id="hero" class="hero-signup">
+        <div class="container hero-container">
+            <div class="page-navigation">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
                     </li>
-                    <div id="mit-status-check">
-                        <li class="form-group form-check mit-specific">
-                            {{ render_field(form.class_year_ok) }}
-                        </li>
-                        <li class="form-group form-check mit-specific">
-                            {{ render_field(form.major_ok) }}
-                        </li>
-                        <li class="form-group form-check mit-specific">
-                            {{ render_field(form.minor_ok) }}
-                        </li>
-                        <li class="form-group form-check mit-specific">
-                            {{ render_field(form.lg_ok)}}
-                        </li>
-                        <li class="form-group form-check">
-                            {{ render_field(form.activities_ok) }}
-                        </li>
-                        <li class="form-group form-check">
-                            {{ render_field(form.bio_ok) }}
-                        </li>
-                    </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
                 </ul>
-                <input type="submit" value="Sign Up" class="btn btn-primary">
-            </form>
+            </div>
+            <h1>Project Endurance</h1>
+            <h2>Fill out the form below to sign up to become a contributor!</h2>
         </div>
-    </div>
+    </section>
+    <main>
+        <section id="fair-use-clarification">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Important information</h2>
+                </div>
+                <p>In order to associate multiple files submitted by the same people, we ask that you submit your name
+                    and
+                    class year with your submissions. Optional identifying information, such as major/s, minor/s, living
+                    group affiliation, and course can also be selected. You may choose what, if any, of this information
+                    to
+                    be allowed to be made public. Again, for clarification:</p>
+
+                <ul>
+                    <li><i class="bx bx-check-double"></i>We require your email, this information will not be published
+                        or released anywhere without expressed permission</li>
+                    <li><i class="bx bx-check-double"></i>Anything you select as "OK to make public" can and may be made
+                        publically available.</li>
+                </ul>
+
+                <em>NOTE: All information will be recorded in databases available only to the professor and current
+                    class of STS.050. Your personal information will not be made public except as you have
+                    permitted.
+                </em>
+
+                <h5 style="margin-top: 10px;">
+                    <b>By uploading or mailing a letter or submitting a photograph to this project you are certifying
+                        that you the
+                        creator of this work and that you are granting MIT permission in perpetuity to use and publish
+                        the contents in print, electronic and other media.</b>
+                </h5>
+            </div>
+        </section>
+        <section id="sign-up" class="section-bg">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Endurance Signup Form</h2>
+                </div>
+                <p>Please note that you will be able to edit your responses here later, so if you make a mistake while
+                    submitting, don't fret! Some of the more open-ended fields, such as your self-bio or the
+                    clubs/activities your participated in can also be filled out later.</p>
+                <form method="post" role="form" class="needs-validation">
+                    {{ form.csrf_token }}
+                    {{ form.hidden_tag() }}
+
+                    {% if form.csrf_token.errors %}
+                    <div class="warning">You have submitted an invalid CSRF token</div>
+                    {% endif %}
+
+                    {% for field in form.errors %}
+                    {% for error in form.errors[field] %}
+                    <div class="alert alert-danger alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>{{ field }} error!</strong> {{error}}
+                    </div>
+                    {% endfor %}
+                    {% endfor %}
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-8 col-md-5" autocomplete="given-name">
+                            {{ render_field(form.first_name) }}
+                        </div>
+                        <div class="form-group col-sm-4 col-md-2">
+                            {{ render_field(form.initials) }}
+                        </div>
+                        <div class="form-group col-sm-12 col-md-5" autocomplete="family-name">
+                            {{ render_field(form.last_name) }}
+                        </div>
+                    </div>
+                    <div class="form-group" autocomplete="email">
+                        {{ render_field(form.email) }}
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6">
+                            {{ render_field(form.affiliation) }}
+                        </div>
+                        <div class="form-group col-lg-3 mit-specific">
+                            {{ render_field(form.class_year) }}
+                        </div>
+                    </div>
+                    <div class="form-group mit-specific">
+                        {{ render_field(form.major) }}
+                    </div>
+                    <div class="form-group mit-specific">
+                        {{ render_field(form.minor) }}
+                    </div>
+                    <div class="form-group mit-specific">
+                        {{ render_field(form.lg) }}
+                    </div>
+                    <div class="form-group mit-specific">
+                        {{ render_field(form.activities) }}
+                    </div>
+                    <div class="form-group">
+                        {{ render_field(form.bio) }}
+                    </div>
+
+                    <div class="section-title">
+                        <h2>Data Use Permissions</h2>
+                        <p>Pay attention below. This is where you tell us what we can/can't make public.</p>
+                    </div>
+                    <p>We hope to use this submissions for a wide variety of multi-media presentations, please check
+                        each
+                        box below representing whether you're okay with us using this information or not.</p>
+                    <ul>
+                        <li class="form-group form-check">
+                            {{ render_field(form.name_ok) }}
+                        </li>
+                        <div id="mit-status-check">
+                            <li class="form-group form-check mit-specific">
+                                {{ render_field(form.class_year_ok) }}
+                            </li>
+                            <li class="form-group form-check mit-specific">
+                                {{ render_field(form.major_ok) }}
+                            </li>
+                            <li class="form-group form-check mit-specific">
+                                {{ render_field(form.minor_ok) }}
+                            </li>
+                            <li class="form-group form-check mit-specific">
+                                {{ render_field(form.lg_ok)}}
+                            </li>
+                            <li class="form-group form-check">
+                                {{ render_field(form.activities_ok) }}
+                            </li>
+                            <li class="form-group form-check">
+                                {{ render_field(form.bio_ok) }}
+                            </li>
+                        </div>
+                    </ul>
+                    <input type="submit" value="Sign Up" class="btn btn-primary">
+                </form>
+            </div>
+        </section>
+        <footer id="footer">
+            <div class="container">
+                <div class="copyright">
+                    Made with <scan role="image" aria-label="hamburger">❤️</scan> by Gonzo and the rest of the STS.050
+                    Class
+                </div>
+                <div class="source">
+                    The <a href="https://github.com/dggsax/endurance" target="_none" rel="noopener">Source code</a> for
+                    this project lives on Github.
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-landing-page/ -->
+                    Designed by <a href="https://bootstrapmade.com/" target="_none" rel="noopener">BootstrapMade</a>
+                </div>
+            </div>
+        </footer><!-- End #footer -->
+    </main>
 </body>
 {% endblock %}
 

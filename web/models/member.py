@@ -32,6 +32,7 @@ class Member(TimeStampMixin, UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
 
     email = db.Column(db.String(128), unique=True)
+    admin = db.Column(db.Boolean, default=False)
 
     first_name = db.Column(db.String(64), nullable=False)
     initials = db.Column(db.String(12))

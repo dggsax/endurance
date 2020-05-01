@@ -7,8 +7,15 @@
         <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/bootstrap.min.css') }}">
         <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/chosen.min.css') }}">
         <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/component-chosen.min.css') }}">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-            integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='vendor/boxicons.min.css') }}">
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/siimple-styles.css') }}">
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/fontawesome-all.min.css') }}">
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/base.css') }}">
+
+        <!-- Google Fonts -->
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+            rel="stylesheet">
 
         <!-- Fonts! -->
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
@@ -18,7 +25,7 @@
         <style>
             body {
                 background-color: #FEFEFE;
-                font-family: "Palatino";
+                font-family: "Lato";
             }
 
             /* fixes issue where the padding on the multi-select field is displaced 😤*/
@@ -37,32 +44,61 @@
                 background-image: none !important;
             }
         </style>
+
+        {% block head %}
+        {% endblock %}
     </head>
 
     <!-- Div for messages as they appear -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-        {% for category, message in messages %}
-            <div  class="alert alert-{{category}}" role="alert" style="width:100%;">
-                {{ message }}
-                <button type="button" class="close" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+    <div aria-live="polite" aria-atomic="true" style="position: absolute; width: 100%;">
+        <!-- Position it -->
+        <div style="position: absolute; top: 0; right: 0; padding-right: 30px; padding-top: 30px">
+            {% for category, message in messages %}
+            <!-- Then put toasts within -->
+            <div class="toast fade show animation" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true">
+                <div class="toast-header">
+                    {% if category == "error" %}
+                        <i class="fas fa-exclamation-triangle fa-lg text-danger"></i>
+                        <strong class="mr-auto">Error Message</strong>
+                    {% elif category == "info" %}
+                        <i class="fas fa-info-circle fa-lg text-info"></i>
+                        <strong class="mr-auto">Message</strong>
+                    {% else %}
+                        <i class="fas fa-envelope fa-lg text-primary"></i>
+                        <strong class="mr-auto">Message</strong>
+                    {% endif %}
+                    <small class="text-muted">just now</small>
+                    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="toast-body">
+                    {{ message }}
+                </div>
             </div>
-        {% endfor %}
+            {% endfor %}
+
+        </div>
+    </div>
     {% endif %}
-{% endwith %}
+    {% endwith %}
 
     {% block body %}
     {% endblock %}
 
     <!-- JS -->
-    <script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery-3.5.0.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='vendor/jquery-3.4.1.slim.min.js') }}"></script>
     <script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='vendor/bootstrap.bundle.min.js') }}"></script>
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs"
         data-app-key="pnf3hxap7zkygz3"></script>
+
+    <script type="text/javascript">
+        $('.toast').toast()
+    </script>
     {% block script %}
     {% endblock %}
 

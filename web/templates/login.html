@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% from "form_macros.html" import render_field %}
+
+{% block body %}
+
+<body class="section-bg">
+    <main class="container-xl">
+        <section id="login">
+            <div class="jumbotron">
+                <h1 class="">MIT Endurance</h1>
+                <p class="lead">Login Page</p>
+                <hr>
+                <p>Welcome to the sign-in page. If you have not yet signed up to contribute, please <a
+                        href="{{ url_for('main.sign_up_view')}}">consider signing up here</a>!
+                </p>
+                <p>If you have already registered as a contributor, then you are in the right place. Find your magic
+                    link and click it to log in!
+                </p>
+                <p><em>If you're having difficulties with your login link or you are unable to find it, fill out the following form with the email you used to sign up.</em></p>
+
+                <hr>
+                
+                <form method="post" role="form">
+                    {{ form.hidden_tag() }}
+    
+                    {{ render_field(form.email) }}
+
+                    {% for field in form.errors %}
+                        {% for error in form.errors[field] %}
+                            <div class="alert alert-danger alert-dismissable">
+                                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                                <strong>{{ field }} error!</strong> {{error}}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+    
+                    <input type="submit" value="Send Test Email" class="btn btn-primary">
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}

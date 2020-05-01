@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock head %}
+
+
+{% block body %}
+
+<body>
+    <section id="hero" class="letter-everyone-else">
+        <div class="container hero-container">
+            <div class="page-navigation">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                </ul>
+            </div>
+            <h1>To Everyone Else</h1>
+            <h2><em>Letter from the class</em></h2>
+        </div>
+    </section>
+    <main id="main">
+        <section id=letter">
+            <div class="container">
+                <p>To everyone else, </p>
+                <p>The MIT community is joined in infinitely many ways and through infinitely many means. There are many
+                    more members of the community than just the students robbed of their ceremonies. </p>
+
+                <p>We would love to hear
+                    stories from everyone - current students, members of the Emma Rogers Society, facilities and staff
+                    members, alumni of different years, Boston and Cambridge community members, MIT Corporation members,
+                    campus police officers, members of administration, presidents of MIT, and absolutely everybody else
+                    - of how life has changed in these strange times.</p>
+
+
+                <p>We look forward to hearing perspectives on the crisis, on
+                life, and on this period of adjustment from each and every person who would like to contribute their
+                story.</p> 
+                
+                <p>Thank you for helping to hold all of us together.</p>
+                
+                <div class="button-container">
+                    <a href="{{ url_for('main.sign_up_view') }}" class="sign-up-button">
+                        <button type="button" class="btn">Sign up to contribute</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="copyright">
+                    Made with <scan role="image" aria-label="hamburger">❤️</scan> by Gonzo and the rest of the STS.050
+                    Class
+                </div>
+                <div class="source">
+                    The <a href="https://github.com/dggsax/endurance" target="_none" rel="noopener">Source code</a> for
+                    this project lives on Github.
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-landing-page/ -->
+                    Designed by <a href="https://bootstrapmade.com/" target="_none" rel="noopener">BootstrapMade</a>
+                </div>
+            </div>
+        </footer><!-- End #footer -->
+    </main>
+</body>
+{% endblock %}

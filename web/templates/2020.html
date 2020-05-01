@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock head %}
+
+
+{% block body %}
+
+<body>
+    <section id="hero" class="letter-2020">
+        <div class="container hero-container">
+            <div class="page-navigation">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                </ul>
+            </div>
+            <h1>To the Class of 2020</h1>
+            <h2><em>A Letter from Yiran He '20 to you</em></h2>
+        </div>
+    </section>
+    <main id="main">
+        <section id=letter">
+            <div class="container">
+                <p>Dear Class of 2020,</p>
+                <p>
+                    Commencement is not happening the way we all expected, which makes us sad but also makes the class
+                    of
+                    1970
+                    sad – they were supposed to come back for their 50th reunion, and that’s not happening either. Their
+                    commencement was also unusual, as it was affected by the Kent State shootings and nation-wide
+                    protests.
+                    We
+                    want to explore how we’ve felt the sudden termination of normalcy, and generally what we notice.
+                    We’re
+                    interested in details, in people’s stories, we’re interested in your experiences.
+                </p>
+                <p>
+                    Things are weird. Things are REALLY weird, actually. I’m in STS.050, History of MIT, and we want to
+                    document
+                    how weird everything is.
+                </p>
+                <p>
+                    Prof. Douglas usually asks her students to hand-write letters about their experiences to future
+                    students
+                    of
+                    the class. The 2014 students wrote about the Marathon bombings; 2016 students wrote about tent
+                    parties.
+                    We’ve designed this website where you can drop scans or photos of handwritten thoughts, or typed
+                    versions.
+                    There are a couple suggested guiding questions to look at below, but we’d just really like to take a
+                    snapshot of sorts of What the Hell is Going On.
+                </p>
+                <div class="prompts">
+                    <ul>
+                        <li><i class="bx bx-check-double"></i> How did you spend that last insane week?</li>
+                        <li><i class="bx bx-check-double"></i> How are you organizing your life now? How do you deal with both the changes, and the way
+                            things
+                            are going now?</li>
+                        <li><i class="bx bx-check-double"></i> What is important about physical presence? What or who do you miss/need about or from an
+                            actual
+                            campus?</li>
+                        <li><i class="bx bx-check-double"></i> What is/was on your mind? What are the stories of your experiences that you want others to
+                            remember going forward?</li>
+                    </ul>
+                </div>
+                <p>
+                    We’re asking the class of 1970 similar questions and we hope this becomes a kind of long-ranging
+                    conversation across the generations, and maybe into the future.
+                </p>
+                <p>
+                    I’m really excited to see where we take this. We’ve floated ideas about maybe compiling thoughts
+                    into a
+                    book, gifted to both the classes of 2020 and 1970, to commemorate this year – any other thoughts are
+                    extremely welcome. I think documenting the unusualness of the year, with personal things like
+                    handwriting
+                    and photos, will make it something to look back on for years, and maybe we can find some common
+                    ground
+                    across the various crises MIT has faced.
+                </p>
+                <p>
+                    Yiran He ’20, on behalf of STS.050
+                </p>
+                <div class="button-container">
+                    <a href="{{ url_for('main.sign_up_view') }}" class="sign-up-button">
+                        <button type="button" class="btn">Sign up to contribute</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="copyright">
+                    Made with <scan role="image" aria-label="hamburger">❤️</scan> by Gonzo and the rest of the STS.050
+                    Class
+                </div>
+                <div class="source">
+                    The <a href="https://github.com/dggsax/endurance" target="_none" rel="noopener">Source code</a> for
+                    this project lives on Github.
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-landing-page/ -->
+                    Designed by <a href="https://bootstrapmade.com/" target="_none" rel="noopener">BootstrapMade</a>
+                </div>
+            </div>
+        </footer><!-- End #footer -->
+    </main>
+</body>
+{% endblock %}

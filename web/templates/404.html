@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block body %}
+
+<body class="section-bg">
+    <div class="container-xl">
+        <div class="card" style="max-width: 800px;">
+            <img class="card-img-top" src="{{ url_for('static', filename='img/404.jpg') }}">
+            <div class="card-body">
+                <h1 class="card-title">File Not Found</h1>
+                <p class="card-text"><a href="{{ url_for('main.index') }}">Back</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

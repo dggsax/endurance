@@ -1,0 +1,24 @@
+.banner {
+    -o-object-fit: cover;
+    object-fit: cover;
+    width: 100%;
+    -ms-transform: none;
+    -moz-transform: none;
+    -webkit-transform: none;
+    transform: none;
+    top: 0;
+    max-height: 700px !important;
+    max-width: 1000%;
+}
+
+.banner-branding {
+    bottom: 0;
+    left: 0;
+    height: auto;
+    padding-top: 0;
+    /* position: absolute; */
+    width: 100%;
+    display: table-cell;
+    height: 100%;
+    vertical-align: bottom;
+}

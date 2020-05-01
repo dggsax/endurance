@@ -1,0 +1,74 @@
+.animation {
+    animation: vibrate 0.3s linear infinite both !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animation {
+        animation: none;
+    }
+}
+
+#login>.jumbotron {
+    background-color: #fffefd;
+    border-radius: 25px;
+    -webkit-box-shadow: 10px 10px 130px -18px rgba(253, 104, 14, 0.46);
+    -moz-box-shadow: 10px 10px 130px -18px rgba(253, 104, 14, 0.46);
+    box-shadow: 10px 10px 130px -18px rgba(253, 104, 14, 0.46);
+}
+
+/* Medium devices (tablets, 768px and up)*/
+
+@media (min-width: 768px) {}
+
+.dropbox {
+    background-color: #0057FF;
+    flex-direction:  row;
+}
+
+.dropbox > i {
+    color: white !important;
+}
+
+.fa-dropbox {
+    color: #0057FF;
+}
+
+.page404 {
+    background: url("../img/404.jpg") center bottom!important;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.page-navigation .nav-link {
+    font-weight: bolder;
+    color: #FEFEFE;
+}
+
+.letter-1970 .page-navigation .nav-link {
+    font-weight: bolder;
+    text-shadow: -2px 2px black;
+}
+
+.letter-1970 h1, .letter-1970 h2 {
+    text-shadow: -2px 2px black;
+}
+
+.page-navigation .nav-link:hover {
+    font-weight: bolder;
+    color: #fd680e;
+}
+
+#profile-intro .nav-link {
+    text-shadow: none;
+    color: #fd680e;
+    font-size: 20px;
+}
+
+#profile-intro ul.nav {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+#letter p {
+    font-size: 30px;
+}

@@ -1,12 +1,185 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock head %}
+
+
 {% block body %}
 
 <body>
-    <h1>Welcome to MIT Endurance</h1>
-    <p>pretend there's pictures and stuff here</p>
-    <a href="{{ url_for('main.sign_up_view') }}">
-    <button type="button" class="btn btn-success">Sign up to contribute</button>
-    </a>
+    <section id="hero">
+        <div class="container hero-container">
+            <div class="page-navigation">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/sign-up">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                </ul>
+            </div>
+
+            <h1>Project Endurance</h1>
+            <h2>Collecting letters from MIT in the age of COVID-19</h2>
+        </div>
+    </section>
+    <main id="main">
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <img src="{{ url_for('static', filename='img/shattered-glass.jpeg') }}" class="img-fluid"
+                            alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <h3><em>TLDR:</em> we’re asking the classes of 2020 and 1970 and beyond to submit handwritten or
+                            typed
+                            letters, photos, and/or anything else about their experiences!</h3>
+                        <ul>
+                            <li><i class="bx bx-check-double"></i> History of MIT (STS.050) as a class is trying to
+                                document what MIT looks like in this
+                                current time of crisis. Early eviction of students from campus is unprecedented, as is a
+                                completely cancelled commencement. It’s the sort of event written about in newspapers
+                                today,
+                                and history books in the future. We hope to record the kinds of things that might not
+                                get
+                                recorded in those types of documentation.</li>
+                            <li><i class="bx bx-check-double"></i> We're looking for anything and everything, from
+                                letters to photographs, as we support many different forms of submission</li>
+                        </ul>
+                        <a href="{{ url_for('main.sign_up_view') }}" class="sign-up-button">
+                            <button type="button" class="btn">Sign up to contribute</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+
+        <!-- ====== Why Us Section ====== -->
+        <section id="why-us" class="why-us section-bg">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Letters to our contributors</h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/purrel-stand.jpg') }}"
+                                class="card-img-top" alt="Photo of student holding Purrel stand during party">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="to-the-class-of-2020">To the Class of 2020</a></h5>
+                                <p class="card-text">For those members of the Class of 2020, deprived of their Senior
+                                    Spring and their Commencement, here is a letter for you to help guide your thoughts
+                                    as you think about what to submit to us. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/1970.jpg') }}" class="card-img-top"
+                                alt="Photo of students prottesting MIRV">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="/to-the-class-of-1970">To the Class of 1970</a></h5>
+                                <p class="card-text">To the Class of 1970, affected by the fate of time for their own
+                                    Commencement and their 50th Reunion, Karen Arenson has drafted a letter to you. </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="card">
+                            <img src="{{ url_for('static', filename='img/everyone_else.jpg') }}" class="card-img-top"
+                                alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title"><a href="">To Everyone Else</a></h5>
+                                <p class="card-text">And to everyone else, underclassmen, alumni, faculty, staff, the
+                                    broader MIT community, family of MIT members, we reach out to you as well to hear
+                                    your stories of endurance. </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ====== Frequently Asked Questions Section ====== -->
+        <section id="faq">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+
+                <ul class="faq-list">
+                    <li>
+                        <a data-toggle="collapse" class="collapsed" href="#faq1">Why "Endurance"? <i
+                                class="bx bx-down-arrow-alt icon-show"></i><i class="bx bx-x icon-close"></i></a>
+                        <div id="faq1" class="collapse" data-parent=".faq-list">
+                            <p>
+                                We chose the title "Endurance" as a way to represent what people are doing today in the
+                                face of COVID-19, they are enduring. However, this is not, has not, and will not be the
+                                only time we have to endure through challenges. So, we decided on Endurance as a show of
+                                solidarity or some shit idk we gotta change this
+                            </p>
+                        </div>
+                    </li>
+
+                    <li>
+                        <a data-toggle="collapse" class="collapsed" href="#faq2">How do I get involved? <i
+                                class="bx bx-down-arrow-alt icon-show"></i><i class="bx bx-x icon-close"></i></a>
+                        <div id="faq2" class="collapse" data-parent=".faq-list">
+                            <p>
+                                Click the button below to sign-up as a contributor! This will take you to a form that
+                                will add you to our system as a contributor. Once you sign up, you will be able to go to
+                                your profile page and view your options for submitting content to us.
+                            </p>
+                            <div class="button-container">
+                                <a href="{{ url_for('main.sign_up_view') }}" class="sign-up-button">
+                                    <button type="button" class="btn">Sign up to contribute</button>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <a data-toggle="collapse" class="collapsed" href="#faq3">My question isn't answered here, how
+                            can I reach you? <i class="bx bx-down-arrow-alt icon-show"></i><i
+                                class="bx bx-x icon-close"></i></a>
+                        <div id="faq3" class="collapse" data-parent=".faq-list">
+                            <p>
+                                Please email us at <a href="mailto:endurance-help@mit.edu">endurance-help@mit.edu</a>
+                                and we'll be ready to answer your question!
+                            </p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="copyright">
+                    Made with <scan role="image" aria-label="hamburger">❤️</scan> by Gonzo and the rest of the STS.050
+                    Class
+                </div>
+                <div class="source">
+                    The <a href="https://github.com/dggsax/endurance" target="_none" rel="noopener">Source code</a> for
+                    this project lives on Github.
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-landing-page/ -->
+                    Designed by <a href="https://bootstrapmade.com/" target="_none" rel="noopener">BootstrapMade</a>
+                </div>
+            </div>
+        </footer><!-- End #footer -->
+    </main>
 </body>
 {% endblock %}

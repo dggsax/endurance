@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+<!-- {% block head %}
+<link rel="stylesheet" type=text/css href="{{ url_for('static', filename='css/home.css') }}">
+{% endblock head %} -->
+
+
+{% block body %}
+
+<body>
+    <section id="hero" class="letter-1970">
+        <div class="container hero-container">
+            <div class="page-navigation">
+                <ul class="nav justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/profile">Profile</a>
+                    </li>
+                </ul>
+            </div>
+            <h1>To the Class of 1970</h1>
+            <h2><em>A Letter from Karen Arenson '70 to you</em></h2>
+        </div>
+    </section>
+    <main id="main">
+        <section id=letter">
+            <div class="container">
+                <p>To Letter-Writers from the Class of ’70: </p>
+
+                <p>Our class has been invited to participate in a very unusual project with the class of 2020: writing
+                    letters about our reactions to the current coronavirus situation and how we are dealing with it – to
+                    be read by MIT students and maybe others five years hence (and maybe beyond).</p>
+
+                <p>We were approached because our class was so affected in our senior year 50 years ago, by the November
+                    Actions, Vietnam protests, the student strike and related Kent State killings, and other matters –
+                    and also because of the unusual circumstances this year which have resulted in the postponement of
+                    our 50th reunion.</p>
+
+                <p>As one of Karen’s former journalism colleagues put it, as we write our letters, we should think of
+                    ourselves as “historians of the moment,” and talk about things we are thinking and noticing, large
+                    and small. What are the details that are not going to make it into the big reports about the virus
+                    and its impact on us, in the United States and elsewhere? </p>
+
+                <p>Below are some questions that you might want to answer. But feel free to head in other directions
+                    that move you. Do not feel that you need to answer each and every question – or any of them. </p>
+                <div class="prompts">
+                    <ul>
+                        <li><i class="bx bx-check-double"></i> Are you sheltering in place? With how many others? Where?
+                        </li>
+                        <li><i class="bx bx-check-double"></i> When did you start taking the virus very seriously and
+                            what made it become more serious to you?
+                        </li>
+                        <li><i class="bx bx-check-double"></i> How fearful are you for your own life and for the lives
+                            of others whom you know?</li>
+                        <li><i class="bx bx-check-double"></i> Have you lost any friends or family members to the virus?
+                        </li>
+                        <li><i class="bx bx-check-double"></i> Has the sheltering in place left you feeling melancholy
+                            or depressed?</li>
+                        <li><i class="bx bx-check-double"></i> Has the virus left you feeling helpless, and if so, is
+                            that an unusual feeling? How do you deal
+                            with it?</li>
+                        <li><i class="bx bx-check-double"></i> Are you helping others in any way? Are others helping
+                            you? If so, how?</li>
+                        <li><i class="bx bx-check-double"></i> How are you organizing your life? What do you find are
+                            your best diversions?</li>
+                        <li><i class="bx bx-check-double"></i> Do you think your life will be very different after the
+                            virus is totally past? And if so, in
+                            what way?</li>
+                        <li><i class="bx bx-check-double"></i> When do you think your country and the world will be
+                            safely past this pandemic?</li>
+                        <li><i class="bx bx-check-double"></i> How does this social challenge compare to others you have
+                            faced in your life, both while at MIT
+                            and later?</li>
+                        <li><i class="bx bx-check-double"></i> What have you learned over your lifetime from dealing
+                            with major social disruptions?</li>
+                        <li><i class="bx bx-check-double"></i> Did your MIT education prepare you in any way for this
+                            unusual pandemic period?</li>
+                        <li><i class="bx bx-check-double"></i> What perspective or advice would you offer to younger
+                            people, particularly college age, about
+                            facing big social challenges together?</li>
+                    </ul>
+                </div>
+
+                <p>The letter can be as short or as long as you wish, a paragraph or two or a page or two or three. Feel
+                    free to add photos. The letters can be handwritten and then uploaded or typed in.</p>
+
+                <p>Thanks for your help.</p>
+
+                <p>Karen Arenson ’70 and Steven Carhart ‘70</p>
+
+
+                <div class="button-container">
+                    <a href="{{ url_for('main.sign_up_view') }}" class="sign-up-button">
+                        <button type="button" class="btn">Sign up to contribute</button>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <footer id="footer">
+            <div class="container">
+                <div class="copyright">
+                    Made with <scan role="image" aria-label="hamburger">❤️</scan> by Gonzo and the rest of the STS.050
+                    Class
+                </div>
+                <div class="source">
+                    The <a href="https://github.com/dggsax/endurance" target="_none" rel="noopener">Source code</a> for
+                    this project lives on Github.
+                </div>
+                <div class="credits">
+                    <!-- All the links in the footer should remain intact. -->
+                    <!-- You can delete the links only if you purchased the pro version. -->
+                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-landing-page/ -->
+                    Designed by <a href="https://bootstrapmade.com/" target="_none" rel="noopener">BootstrapMade</a>
+                </div>
+            </div>
+        </footer><!-- End #footer -->
+    </main>
+</body>
+{% endblock %}
