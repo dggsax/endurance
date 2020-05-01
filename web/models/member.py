@@ -79,8 +79,7 @@ class Member(TimeStampMixin, UserMixin, db.Model):
         magic_link Generate and return a magic link URL
         """
 
-        magic_link = f"{request.host}/login?email={self.email}&token={self.magic_token}"
-        print(magic_link)
+        magic_link = f"{request.base_url}/login?email={self.email}&token={self.magic_token}"
 
         return magic_link
 
