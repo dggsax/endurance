@@ -1,5 +1,6 @@
 from flask import Blueprint, flash, render_template, url_for, redirect, request
 from flask_login import login_required, login_user, current_user, logout_user
+
 from web.utils import admin_required
 from web.controllers.forms import *
 from web.models import Member, Major, Minor
@@ -28,14 +29,6 @@ def profile_view():
 
     try:
         if form.validate_on_submit():
-            print(form.data.items())
-            form.data["class_year"] = int(form.data["class_year"])
-            print("FROM DATA")
-            print(form.data["class_year"])
-            print(type(form.data["class_year"]))
-            print("ORM DATA")
-            print(current_user.class_year)
-            print(type(current_user.class_year))
 
             filtered = {
                 k: v
@@ -48,16 +41,26 @@ def profile_view():
                 and current_user.__dict__[k] != v
             }
 
-            # check class_year individually, since the form returns as 
-            #   a string and our database stores it as an integer
-            if int(form.data["class_year"]) == current_user.class_year:
-                del filtered["class_year"]
+            filtered = {}
+            invalid_items = ["submit", "csrf_token", "affiliation"]
+            for k, v in form.data.items():
+                if k in invalid_items:
+                    continue
 
-            # because we currently can't change major, ignore the "changes"
-            #   (which will appear as just empty arrays)
-            if "major" in filtered: del filtered["major"]
-            if "minor" in filtered: del filtered["minor"]
+                # existing value
+                e_v = current_user.__dict__[k]
 
+                if type(e_v) is bool:
+                    if bool(v) != e_v: filtered[k] = v
+                elif type(e_v) is int:
+                    if int(v) != e_v: filtered[k] = v
+                elif type(e_v) is str:
+                    if v != e_v: filtered[k] = v
+                else:
+                    # If we are here, then we're working with the arrays of majors/minors
+                    # which we currently are not allowing users to change
+                    continue
+                
             for key, value in filtered.items():
                 setattr(current_user, key, value)
 
