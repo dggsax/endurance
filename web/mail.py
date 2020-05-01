@@ -37,14 +37,14 @@ def resend_magic_link(member):
     recipient = member.email
     subject = "MIT Endurance Magic Link"
     template = "mail/resend_magic_link"
-    name = member.first_name
+    first_name = member.first_name
     magic_link = member.magic_link()
 
     send_email(
         recipient=recipient,
         subject=subject,
         template=template,
-        name=name,
+        first_name=first_name,
         magic_link=magic_link
     )
 
