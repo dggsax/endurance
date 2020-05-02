@@ -31,10 +31,20 @@ class MemberForm(FlaskForm):
 
         # if we are not logged in and the email is used, reject. if we are logged in, and it's different from the email 
         # of the logged in individual, and it already exists, reject.
-        if ((current_user.is_anonymous and email_exists) or (current_user.email != field.data and email_exists)):
-            raise ValidationError(
-                f"Email {field.data} already exists in our system. If you believe this to be an error, please let us know."
-            )
+
+        try:
+            if not email_exists:
+                return
+            elif current_user.is_anonymous and email_exists:
+                raise ValidationError(
+                    f"Email {field.data} already exists in our system. If you believe this to be an error, please let us know."
+                )
+            elif current_user.email != field.data and email_exists:
+                raise ValidationError(
+                    f"Email {field.data} already exists in our system. If you believe this to be an error, please let us know."
+                )
+        except Exception as e:
+            raise e
 
     first_name = StringField(
         "First name",
