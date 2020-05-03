@@ -53,7 +53,7 @@ class MemberForm(FlaskForm):
     )
 
     initials = StringField(
-        "Initials",
+        "Middle Initial(s)",
         validators=[
             Optional(),
             Regexp(
@@ -152,9 +152,9 @@ class SendTestEmailForm(FlaskForm):
 
 class ResendMagicLink(FlaskForm):
     email = StringField(
-        label="Recipient Email",
+        label="Account Email",
         validators=[DataRequired(), Email()],
-        description="Email to re-send magic link for",
+        description="Email to re-send magic link to",
         render_kw={"placeholder": "timbeaver@mit.edu"},
     )
 

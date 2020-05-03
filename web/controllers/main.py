@@ -25,7 +25,7 @@ def profile_view():
     form = MemberForm(obj=current_user)
     form.affiliation.data = current_user.affiliation.value
 
-    form.email.description = "We do not allow you to change your email once you've created your account. If you really wish to change the email, please email mitendurance@mit.edu"
+    form.email.description = "We do not allow you to change your email once you've created your account. If you really wish to change the email, please email endurance-help@mit.edu"
 
     try:
         if form.validate_on_submit():

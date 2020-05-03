@@ -24,14 +24,14 @@
                 </li>
             </ul>
                 <div class="profile-list">
-                    <a data-toggle="collapse" href="#message" aria-expanded="true">Message from the developer (click to
-                        collapse)
+                    <a data-toggle="collapse" href="#message" aria-expanded="true">Welcome Message (click to
+                        hide)
                         <i class="bx bx-down-arrow-alt icon-show"></i>
                         <i class="bx bx-x icon-close"></i>
                     </a>
                     <div id="message" class="collapse show" data-parent=".profile-list">
                         <p>Hi {{ current_user.first_name }}!</p>
-                        <p>Welcome to your Profile Management studio. Here you can view your options for submitting
+                        <p>Here you can view your options for submitting
                             files and documents to us for our project. You can also choose to edit the information you
                             submitted when you filled out this form, and change
                             privacy settings that you may have filled out when you initially signed up.</p>
@@ -137,7 +137,7 @@
                                 <div class="card-body">
                                     <p class="card-text">
                                         In case our Dropbox solution is not working for you, you may email files 
-                                        directly to us at <a href="mailto:mitendurance@gmail.com">mitendurance@gmail.com</a> 
+                                        directly to us at <a href="mailto:endurance@mit.edu">endurance@mit.edu</a> 
                                         and we can upload the files for you. Please don't resort to this as a default, because
                                         we created this website as a means of avoiding this method in the first place. That being
                                         said, accessibility and other factors are of course important, so if this is the most 
@@ -181,6 +181,7 @@
 
 
                             <h4><u>Dropbox Preview</u></h4>
+                            <p>This previewer will refresh every minute, so if you uploaded a file and you aren't seeing it here, just hang tight for a bit!</p>
                             <div id="dropbox-info-preview">
                                 <!-- where dropbox will embed the folder preview -->
                                 <div id="dropbox-embedder"></div>
@@ -366,6 +367,12 @@
     const embedEmbedder = (destinationElementId, url) => {
         let element = document.getElementById(destinationElementId);
         Dropbox.embed({ link: url }, element)
+
+        console.log($("#dropbox-embedder > iframe"));
+        // refresh the iframe every 60 seconds...
+        setInterval(() => {
+            $( '#dropbox-embedder > iframe' ).attr( 'src', function ( i, val ) { return val; });
+        }, 60 * 1000)
     }
 
     const activateChosen = () => {

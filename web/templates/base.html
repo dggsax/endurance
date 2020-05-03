@@ -18,7 +18,9 @@
             rel="stylesheet">
 
         <!-- Fonts! -->
-        <link href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+        <link
+            href="https://fonts.googleapis.com/css?family=Noto+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i"
+            rel="stylesheet">
 
         <title>MIT Endurance</title>
 
@@ -52,22 +54,23 @@
     <!-- Div for messages as they appear -->
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
-    <div aria-live="polite" aria-atomic="true" style="position: absolute; width: 100%;">
+    <div id="toast-holder" aria-live="polite" aria-atomic="true" style="position: absolute; width: 100%;">
         <!-- Position it -->
         <div style="position: absolute; top: 0; right: 0; padding-right: 30px; padding-top: 30px">
             {% for category, message in messages %}
             <!-- Then put toasts within -->
-            <div class="toast fade show animation" role="alert" aria-live="assertive" aria-atomic="true" data-animation="true">
+            <div class="toast fade show animation" role="alert" aria-live="assertive" aria-atomic="true"
+                data-animation="true">
                 <div class="toast-header">
                     {% if category == "error" %}
-                        <i class="fas fa-exclamation-triangle fa-lg text-danger"></i>
-                        <strong class="mr-auto">Error Message</strong>
+                    <i class="fas fa-exclamation-triangle fa-lg text-danger"></i>
+                    <strong class="mr-auto">Error Message</strong>
                     {% elif category == "info" %}
-                        <i class="fas fa-info-circle fa-lg text-info"></i>
-                        <strong class="mr-auto">Message</strong>
+                    <i class="fas fa-info-circle fa-lg text-info"></i>
+                    <strong class="mr-auto">Message</strong>
                     {% else %}
-                        <i class="fas fa-envelope fa-lg text-primary"></i>
-                        <strong class="mr-auto">Message</strong>
+                    <i class="fas fa-envelope fa-lg text-primary"></i>
+                    <strong class="mr-auto">Message</strong>
                     {% endif %}
                     <small class="text-muted">just now</small>
                     <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
@@ -96,9 +99,12 @@
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs"
         data-app-key="pnf3hxap7zkygz3"></script>
 
-    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"
-    <script type="text/javascript">
-        $('.toast').toast()
+    <script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}" <script type="text/javascript"></script>
+    
+    <script>
+        $(document).ready(() => {
+            $(".toast").toast();
+        });
     </script>
     {% block script %}
     {% endblock %}
