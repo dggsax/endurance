@@ -13,7 +13,7 @@ from wtforms.validators import Length, DataRequired, Regexp, Email, Optional
 
 from web.models.enums import AffiliationEnum
 from web.models import Major, Minor, Member
-
+from sqlalchemy import func
 
 class MemberForm(FlaskForm):
     email = StringField(
@@ -159,7 +159,7 @@ class ResendMagicLink(FlaskForm):
     )
 
     def validate_email(self, field):
-        if Member.query.filter_by(email=field.data).first() is None:
+        if Member.query.filter(func.lower(Member.email) == func.lower(field.data)).first() is None:
             raise ValidationError(
-                f'No account associated with email "{field.data}". If you believe this to be an error, please email <a href="mailto:endurance@mit.edu">endurance-help@mit.edu</a>'
+                f'No account associated with email "{field.data}". If you believe this to be an error, please email endurance-help@mit.edu'
         )

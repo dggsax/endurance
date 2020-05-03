@@ -152,12 +152,12 @@ def login():
                 category="error",
             )
     else:
-        flash(message="If you are trying to log in, make sure you're clicking the magic link that was gneerated for you and emailed to you.")
+        flash(message="If you are trying to log in, make sure you're clicking the magic link that was generated for you and emailed to you.")
     # set up magic link sending form
     form = ResendMagicLink()
 
     if form.validate_on_submit():
-        recipient_member = Member.query.filter_by(email=form.email.data).first()
+        recipient_member = Member.query.filter(func.lower(Member.email) == func.lower(form.email.data)).first()
 
         # this will generate a new magic token for the member, create the link, send an email to them, and then flash a message to the interface
         resend_magic_link(recipient_member)
