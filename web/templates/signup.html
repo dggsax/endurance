@@ -96,7 +96,6 @@
                         {{ render_field(form.email) }}
                     </div>
 
-
                     <div class="form-row">
                         <div class="form-group col-lg-6">
                             {{ render_field(form.affiliation) }}
@@ -115,9 +114,15 @@
                         {{ render_field(form.lg) }}
                     </div>
                     <div class="form-group mit-specific">
+                        <div class="counter">
+                            <p class="value" id="activities_counter"></p>
+                        </div>
                         {{ render_field(form.activities) }}
                     </div>
                     <div class="form-group">
+                        <div class="counter">
+                            <p class="value" id="bio_counter"></p>
+                        </div>
                         {{ render_field(form.bio) }}
                     </div>
 
@@ -212,6 +217,8 @@
     $(document).ready(() => {
         watchAffiliationField()
         activateChosen()
+        counter("#activities");
+        counter("#bio");
     })
 </script>
 {% endblock %}

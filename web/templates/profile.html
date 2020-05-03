@@ -50,7 +50,7 @@
             </div>
         </section>
 
-        <section id="profile-control" class="container">
+        <section id="profile-control" class="container-lg">
             <div class="row">
                 <div class="col-3">
                     <nav id="navbar-profile-control" class="navbar navbar-light"
@@ -266,9 +266,15 @@
                                 {{ render_field(form.lg) }}
                             </div>
                             <div class="form-group mit-specific">
+                                <div class="counter">
+                                    <p class="value" id="activities_counter"></p>
+                                </div>
                                 {{ render_field(form.activities) }}
                             </div>
                             <div class="form-group">
+                                <div class="counter">
+                                    <p class="value" id="bio_counter"></p>
+                                </div>
                                 {{ render_field(form.bio) }}
                             </div>
 
@@ -373,8 +379,10 @@
 
     $(document).ready(() => {
         disableEmail();
-        watchAffiliationField()
-        activateChosen()
+        watchAffiliationField();
+        activateChosen();
+        counter("#activities");
+        counter("#bio");
         embedEmbedder("dropbox-embedder", "{{ current_user.dropbox_shared_folder_url }}")
     })
 </script>

@@ -72,3 +72,29 @@
 #letter p {
     font-size: 30px;
 }
+
+.form-group {
+    position: relative;
+}
+
+/* .form-group textarea {
+    position: absolute;
+} */
+
+.counter {
+    position: absolute;
+    right: 0;
+    /* bottom: 0; */
+    z-index: 1030;
+}
+
+.counter .value {
+    color: rgb(177, 177, 177);
+}
+
+.counter .value.over {
+    color: red;
+}
+textarea {
+    min-height: 200px;
+}
